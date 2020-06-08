@@ -25,11 +25,11 @@ public class Employee {
   /**
    * 회계팀에서 기능을 정의하며, CFO 보고를 위해 사용
    */
-  public void calculatePay() {} // CFO actor
+  public double calculatePay() {} // CFO actor
   /**
    * 인사팀에서 기능을 정의하며, COO 보고를 위해 사용
    */
-  public void repostHours() {} // COO actor
+  public double repostHours() {} // COO actor
   /**
    * 데이터베이스 관리자(DBA)가 기능을 정의하며, CTO 보고를 위해 사용
    */
@@ -59,4 +59,24 @@ CFO 팀의 변경요청사항을 적용하기 위해서 regularHours() 에 가�
 
 위 문제들에 대한 해결책은 다양하다. 메서드를 각각 다른 클래스로 이동시키는 방식이 있다. 가장 확실한 해결책은 데이터와 메서드를 분리하는 방식이다. 즉, 아무런 메서드가 없는 간단한 데이터 구조인 `EmployeeData` 클래스를 만들어, 세 개의 클래스가 공유하도록 한다.
 
+```java
+public class PayCalculator {
+  public double calculatePay() {}
+}
 
+public class HourReporter {
+  public double repotHours() {}
+}
+
+public class EmployeeSaver {
+  public void saveEmployee() {}
+}
+```
+
+세 클래스는 서로의 존재를 몰라야 `우연한 중복`을 피할 수 있다.
+
+반면 이 해결책은 개발자가 세 가지 클래스를 인스턴스화하고 추적해야 한다는 게 단점이다. 이러한 난관에서 빠져나올 때 흔히 쓰는 기법으로 `퍼사드(Facade) 패턴`이 있다.
+
+## 결론
+
+단일 책임 원칙은 메서드와 클래스 수준의 원칙이다. 하지만 이보다 상위의 두 수준에서도 다른 형태로 다시 등장한다. 컴포넌트 수준에서는 공통 폐쇄 원칙(Common Closure Principle)이 된다. 아키텍처 수준에서는 아키텍처 경계(Architectural Boundary)의 생성을 책임지는 변경의 축(Axis of Change)이 된다.
