@@ -122,7 +122,7 @@
     - public protected private abstract static final transient volatile synchronized native strictfp
       + [Java Language Specification - Chapter 18. Syntax](https://docs.oracle.com/javase/specs/jls/se7/html/jls-18.html) 참조
       
-### 3. 테이션 선언 후 새줄 사용 (`[newline-after-annotation]`)
+### 3. 어노테이션 선언 후 새줄 사용 (`[newline-after-annotation]`)
   * 클래스, 인터페이스, 메서드, 생성자에 붙는 애너테이션은 선언 후 새줄을 사용한다. 이 위치에서도 파라미터가 없는 애너테이션 1개는 같은 줄에 선언할 수 있다.
     - 좋은 예
     ```java
