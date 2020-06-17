@@ -105,7 +105,7 @@
       
 ## 선언 (Declarations)
 
-### 1. static import에만 와일드 카드 허용 (`[avoid-star-import]`)
+### 1. static import 에만 와일드 카드 허용 (`[avoid-star-import]`)
   * 클래스를 import 할 때는 와일드카드(`*`) 없이 모든 클래스명을 다 쓴다. static import 에서는 와일드카드를 허용한다.
     - 나쁜 예
     ```java
@@ -122,7 +122,7 @@
     - public protected private abstract static final transient volatile synchronized native strictfp
       + [Java Language Specification - Chapter 18. Syntax](https://docs.oracle.com/javase/specs/jls/se7/html/jls-18.html) 참조
       
-### 3. 애너테이션 선언 후 새줄 사용 (`[newline-after-annotation]`)
+### 3. 테이션 선언 후 새줄 사용 (`[newline-after-annotation]`)
   * 클래스, 인터페이스, 메서드, 생성자에 붙는 애너테이션은 선언 후 새줄을 사용한다. 이 위치에서도 파라미터가 없는 애너테이션 1개는 같은 줄에 선언할 수 있다.
     - 좋은 예
     ```java
@@ -183,6 +183,10 @@
       + 메서드의 길이가 길수록 코드 분석이 어려워지고 메서드가 많은 책임을 가지고 있을 수 있다.
       + 수직 스크롤이 늘어난다는 것은 가독성이 떨어진다는 것이다.
       
+### 7. 매개변수가 3개 이상이면 매개변수를 줄일 수 있는지 고려 (`[consider-arguements-count]`)
+  * 매개변수가 3개 이상이면 매개변수를 줄일 수 있는지 고려해야 한다.
+    - 많은 매개변수는 가독성을 떨어뜨린다.
+    
 ## References
 
 > https://naver.github.io/hackday-conventions-java/#space-after-bracket
