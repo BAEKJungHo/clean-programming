@@ -143,8 +143,118 @@
     int base = 0;
     int weight = 2;
     ```
+      
+### 5. 수직과 수평 스크롤을 고려 (`[consider-scrolling]`)
+  * 수직과 수평 스크롤을 고려하여 줄바 꿈을 해야 한다.
+    - 파라미터가 3 개 이상인 경우에만 매개변수 줄바꿈을 실시한다.
+      + 좋은예
+        ```java
+        public String argumentScrolling(
+          String name,
+          String age,
+          String phone
+        ) {}
+        ```
+    - 메서드의 길이는 최대 15 줄 이내로 작성하도록 노력한다.
+      + 메서드의 길이가 길수록 코드 분석이 어려워지고 메서드가 많은 책임을 가지고 있을 수 있다.
+      + 수직 스크롤이 늘어난다는 것은 가독성이 떨어진다는 것이다.
+      
+### 6. 매개변수가 3개 이상이면 매개변수를 줄일 수 있는지 고려 (`[consider-arguements-count]`)
+  * 매개변수가 3개 이상이면 매개변수를 줄일 수 있는지 고려해야 한다.
+    - 많은 매개변수는 가독성을 떨어뜨린다.
     
-### 5. 클래스 중괄호 시작과 끝은 빈 줄 포함 (`[class-start-end-include-blank-lines]`)
+### 7. 배열에서 대괄호는 타입 뒤에 선언 (`[array-square-after-type]`)
+  * 배열 선언에 오는 대괄호(`[]`)는 타입의 바로 뒤에 붙인다. 변수명 뒤에 붙이지 않는다.
+    - 나쁜 예
+      ```java
+      String names[];
+      ```
+    - 좋은 예
+      ```java
+      String[] names;
+      ```
+
+### 8. long 형 값의 마지막에 L 붙이기 (`[long-value-suffix]`)
+  * long 형의 숫자에는 마지막에 대문자 'L' 을 붙인다. 소문자 'l' 보다 숫자 '1' 과의 차이가 커서 가독성이 높아진다.
+    - 나쁜 예
+      ```java
+      long base = 54423234211l;
+      ```
+    - 좋은 예
+      ```java
+      long base = 54423234211L;
+      ```
+      
+### 9. 특수 문자의 전용 선언 방식을 활용 (`[special-escape]`)
+  * `\b, \f, \n,\r,\t, \", \\` 와 같이 특별히 정의된 선언 방식이 있는 특수 문자가 있다. 이런 문자들은 숫자를 이용한 `\008` 이나 `\u0008` 과 같은 숫자를 넣은 선언보다 전용 방식을 활용한다.
+    - 나쁜 예
+      ```java
+      System.out.println("---\012---");
+      ```
+    - 좋은 예
+      ```java
+      System.out.println("---\n---");
+      ```
+      
+## 들여쓰기 (Indentation)
+
+들여쓰기는 코드의 계층을 구분하기 위해 추가하는 문자이다.
+
+### 1. 하드탭 사용 (`[indentation-tab]`)
+  * 탭(tab) 문자를 사용하여 들여쓴다. 탭 대신 스페이스를 사용하지 않는다. 이를 잘 준수하기 위해서 스페이스와 탭을 구별해서 보여주도록 에디터를 설정한다.
+
+### 2. 탭의 크기는 4개의 스페이스 (`[4-spaces-tab]`)
+  * 1개의 탭의 크기는 스페이스 4개와 같도록 에디터에서 설정한다.
+  
+### 3. 블럭 들여쓰기 (`[block-indentation]`)
+  * 클래스, 메서드, 제어문 등의 코드 블럭이 생길 때마다 1단계를 더 들여쓴다.
+  
+## 중괄호 (Braces)
+
+중괄호(`{}`) 는 클래스, 메서드, 제어문의 블럭을 구분한다.
+
+### 1. K&R 스타일로 중괄호 선언 (`[braces-knr-style]`)
+  * 클래스 선언, 메서드 선언, 조건/반복문 등의 코드 블럭을 감싸는 중괄호에 적용되는 규칙이다. 중괄호 선언은 K&R 스타일(Kernighan and Ritchie style)을 따른다. 줄의 마지막에서 시작 중괄호`{`를 쓰고 열고 새줄을 삽입한다. 블럭을 마친후에는 새줄 삽입 후 중괄호를 닫는다.
+    - 나쁜 예
+      ```java
+      public class SearchConditionParser
+      {
+          public boolean isValidExpression(String exp)
+          {
+
+              if (exp == null)
+              {
+                  return false;
+              }
+
+              for (char ch : exp.toCharArray())
+              {
+                   ....
+              }
+
+              return true;
+          }
+      }
+      ```
+    - 좋은 예
+      ```java
+      public class SearchConditionParser {
+         public boolean isValidExpression(String exp) {
+
+             if (exp == null) {
+                 return false;
+             }
+
+             for (char ch : exp.toCharArray()) {
+                 ....
+             }
+
+             return true;
+         }
+      }
+      ```
+
+### 2. 클래스 중괄호 시작과 끝은 빈 줄 포함 (`[class-start-end-include-blank-lines]`)
   * 클래스 중괄호의 시작과 끝 부분은 빈 줄을 포함해야 한다.
     - 나쁜 예 
       ```java
@@ -167,26 +277,25 @@
         
       }
       ```   
+### 3. 메서드 중괄호 시작과 끝은 빈 줄 제거 (`[method-start-end-exclude-blank-lines]`)
+  * 클래스 중괄호의 시작과 끝 부분은 빈 줄을 포함해야 한다.
+    - 나쁜 예 
+      ```java
+        public String getName() {
+        
+          call();
+          return name;
+          
+        }
+      ```
+    - 좋은 예
+      ```java
+        public String getName() {
+          call();
+          return name;
+        }
+      ```   
 
-### 6. 수직과 수평 스크롤을 고려 (`[consider-scrolling]`)
-  * 수직과 수평 스크롤을 고려하여 줄바 꿈을 해야 한다.
-    - 파라미터가 3 개 이상인 경우에만 매개변수 줄바꿈을 실시한다.
-      + 좋은예
-        ```java
-        public String argumentScrolling(
-          String name,
-          String age,
-          String phone
-        ) {}
-        ```
-    - 메서드의 길이는 최대 15 줄 이내로 작성하도록 노력한다.
-      + 메서드의 길이가 길수록 코드 분석이 어려워지고 메서드가 많은 책임을 가지고 있을 수 있다.
-      + 수직 스크롤이 늘어난다는 것은 가독성이 떨어진다는 것이다.
-      
-### 7. 매개변수가 3개 이상이면 매개변수를 줄일 수 있는지 고려 (`[consider-arguements-count]`)
-  * 매개변수가 3개 이상이면 매개변수를 줄일 수 있는지 고려해야 한다.
-    - 많은 매개변수는 가독성을 떨어뜨린다.
-    
 ## References
 
 > https://naver.github.io/hackday-conventions-java/#space-after-bracket
