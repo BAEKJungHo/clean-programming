@@ -254,6 +254,116 @@
       }
       ```
 
+### 2. 닫는 중괄호와 같은 줄에 else, catch, finally, while 선언 (`[sub-flow-after-brace]`)
+  * 아래의 키워드는 닫는 중괄호(`{}`) 와 같은 줄에 쓴다.
+    - 나쁜 예
+      ```java
+      if (line.startWith(WARNING_PREFIX)) {
+          return LogPattern.WARN;
+      }
+      else if (line.startWith(DANGER_PREFIX)) {
+          return LogPattern.DANGER;
+      }
+      else {
+          return LogPattern.NORMAL;
+      }
+      ```
+    - 좋은 예
+      ```java
+      if (line.startWith(WARNING_PREFIX)) {
+          return LogPattern.WARN;
+      } else if (line.startWith(DANGER_PREFIX)) {
+          return LogPattern.DANGER;
+      } else {
+          return LogPattern.NORMAL;
+      }
+      ```
+
+### 3. 빈 블럭에 새줄 없이 중괄호 닫기 허용 (`[permit-concise-empty-block]`)
+  * 내용이 없는 블럭을 선언할 때는 같은 줄에서 중괄호를 닫는 것을 허용한다.
+    - 좋은 예
+      ```java
+      public void close() {}
+      ```
+
+### 4. 조건/반복문에 중괄호 필수 사용 (`[need-braces]`)
+  * 조건, 반복문이 한 줄로 끝더라도 중괄호를 활용한다. 이 문서에 언급된 중괄호의 전후의 공백, 제어문 앞 뒤의 새줄 규칙도 함께 고려한다.
+    - 나쁜 예
+      ```java
+      if (exp == null) return false;
+      for (char ch : exp.toCharArray()) if (ch == 0) return false;
+      ```
+    - 좋은 예
+      ```java
+      if (exp == null) {
+          return false;
+      }
+
+      for (char ch : exp.toCharArray()) {
+          if (ch == 0) {
+              return false;
+          }
+      }
+      ```
+      
+## 소괄호 (parentheses)    
+
+소괄호 사용 시 주의해야할 점
+
+### 1. 소괄호의 시작은 메서드명과 for 문 등 항상 붙어 있어야 한다.
+  * 소괄호의 시작은 메서드명과 for 문 등 항상 붙어 있어야 한다.
+    - 좋은 예
+      ```java
+      public String findValues() {
+        for(int i=0; i<10; i++){}
+      }
+      ```
+    
+## for 문 (For Loop)
+
+for 문 사용 시 주의해야할 점
+
+### 1. for 문 변수 선언 형식 (`[format-for]`)
+  * for 문 변수 선언 형식은 아래와 같이 한다.
+    - 나쁜 예
+      ```java
+      for(int i = 0; i < x.size(); i++) {}
+      ```
+    - 좋은 예
+      ```java
+      for(int i=0; i<x.size(); i++) {}
+      ```
+      
+ ### 2. 이중 for 문에 j 사용 금지 (`[do-not-use-j]`)
+  * 이중 for 문 사용시 변수 j 사용을 금지한다.
+    - 나쁜 예
+      ```java
+      for(int i=0; i<10; i++) {
+       for(int j=0; j<10; j++) {
+       }
+      }
+      ```
+    - 좋은 예
+      ```java
+      for(int i=0; i<10; i++) {
+       for(int k=0; k<10; k++) {
+       }
+      }
+      ```
+      
+## 빈 줄(Blank lines)
+
+빈 줄은 명령문 그룹의 영역을 표시하기 위하여 사용한다.
+
+### 1. package 선언 후 빈 줄 삽입 (`[blankline-after-package]`)
+  * package 선언 후 빈 줄 삽입
+    - 좋은 예
+      ```java
+      package com.naver.lucy.util;
+
+      import java.util.Date;
+      ```
+      
 ### 2. 클래스 중괄호 시작과 끝은 빈 줄 포함 (`[class-start-end-include-blank-lines]`)
   * 클래스 중괄호의 시작과 끝 부분은 빈 줄을 포함해야 한다.
     - 나쁜 예 
@@ -295,7 +405,6 @@
           return name;
         }
       ```   
-
 ## References
 
 > https://naver.github.io/hackday-conventions-java/#space-after-bracket
