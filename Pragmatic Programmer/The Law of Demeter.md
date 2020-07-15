@@ -47,3 +47,7 @@ public void showBalance(BankAccount accnt) {
 ```
 
 위 예제에서 money.printFormat(); 은 디미터 법칙에 위배된다.
+
+## References.
+
+> https://www2.ccs.neu.edu/research/demeter/
