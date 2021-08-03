@@ -13,3 +13,7 @@ public class UserService {
   
 }
 ```
+
+UserService 는 인터페이스에 의존하지만 구현 클래스에도 동시에 의존한다. `클라이언트가 구현체를 직접 선택 : DIP 위반`
+
+> 다형성 만으로는 OCP, DIP 를 지킬 수 없다.
